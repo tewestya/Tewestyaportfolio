@@ -18,6 +18,7 @@ import henonDashboard1 from './assets/henon-dashboard-1.png';
 import henonDashboard2 from './assets/henon-dashboard-2.png';
 import aiTraumaTherapy from './assets/Screenshot 2025-06-03 170542.png';
 import novalabsImage from './assets/Screenshot 2025-08-07 210238.png';
+import resumeImage from '../file/tewestya cv.png';
 
 function App() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -31,7 +32,8 @@ function App() {
       description: 'Designed full school management and adaptive learning systems for KG–12 and college levels.',
       tools: ['Figma'],
       outcome: 'Used by real schools in Ethiopia',
-      link: '#',
+      link: 'https://www.figma.com/design/PnUK67KR0Zi2xzU3u9QJvu/My-works?node-id=0-1&t=Bo9OkcAJQMsgURVi-1',
+      ctaLabel: 'Explore glimpse of my work',
       image: henonDashboard1
     },
     {
@@ -42,7 +44,8 @@ function App() {
       description: 'Developed dashboard interfaces for both admin and client sides with responsive design and usability improvements.',
       tools: ['React', 'Tailwind CSS'],
       outcome: 'Improved user experience and efficiency',
-      link: '#',
+        link: 'http://196.190.251.203:3000/',
+        ctaLabel: 'Open project',
       image: novalabsImage
     },
     {
@@ -152,7 +155,8 @@ function App() {
                 <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </a>
               <a
-                href="#"
+                href={resumeImage}
+                download
                 className="group border-2 border-gray-700 text-gray-300 px-8 py-4 rounded-full hover:border-blue-400 hover:text-blue-400 transition-all duration-300 flex items-center justify-center space-x-2 transform hover:scale-105"
               >
                 <Download className="w-4 h-4" />
@@ -184,7 +188,8 @@ function App() {
                 My dream is to work with global tech companies and build platforms where thriving communities come together.
               </p>
               <a
-                href="#"
+                href={resumeImage}
+                download
                 className="inline-flex items-center space-x-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors shadow-lg hover:shadow-blue-500/30"
               >
                 <Download className="w-4 h-4" />
@@ -315,6 +320,18 @@ function App() {
                       <span className="font-medium">Outcome:</span> {project.outcome}
                     </p>
                   </div>
+
+                  {project.link && project.ctaLabel && (
+                    <a
+                      href={project.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center mt-2 text-blue-400 hover:text-blue-300 text-sm font-medium"
+                    >
+                      {project.ctaLabel}
+                      <ExternalLink className="w-4 h-4 ml-1" />
+                    </a>
+                  )}
                 </div>
               </div>
             ))}
@@ -389,17 +406,18 @@ function App() {
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {[
-              { icon: Mail, label: 'Email', value: 'tewestya@example.com', href: 'mailto:tewestya@example.com' },
-              { icon: Linkedin, label: 'LinkedIn', value: 'LinkedIn Profile', href: '#' },
-              { icon: Github, label: 'GitHub', value: 'GitHub Profile', href: '#' },
-              { icon: Download, label: 'CV', value: 'Download CV', href: '#' }
+              {[
+              { icon: Mail, label: 'Email', value: 'tewestyateklemariam@gmail.com', href: 'mailto:tewestyateklemariam@gmail.com' },
+              { icon: Linkedin, label: 'LinkedIn', value: 'LinkedIn Profile', href: 'https://www.linkedin.com/in/tewestya-teklemariam' },
+              { icon: Github, label: 'GitHub', value: 'GitHub Profile', href: 'https://github.com/tewestya' },
+              { icon: Download, label: 'CV', value: 'Download CV', href: resumeImage }
             ].map((contact, index) => {
               const Icon = contact.icon;
               return (
                 <a
                   key={index}
                   href={contact.href}
+                  download={contact.icon === Download ? '' : undefined}
                   className="group bg-white/10 backdrop-blur-sm rounded-2xl p-6 hover:bg-white/15 transition-all duration-300 transform hover:-translate-y-1 border border-white/20"
                 >
                   <Icon className="w-8 h-8 mx-auto mb-4 group-hover:scale-110 transition-transform text-blue-400" />
